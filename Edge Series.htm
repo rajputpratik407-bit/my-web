@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorola Edge Series | Beyond the Curve</title>
+    <meta name="description" content="Discover the new Motorola Edge Series. From the Ultra flagship to the stylish Fusion, find the perfect curve for you.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Variables --- */
+        :root {
+            --primary-color: #d6008c; /* Magenta */
+            --primary-hover: #ff0099;
+            --accent-cyan: #00b8ff;
+            --bg-dark: #0a0a0a;
+            --bg-panel: #141414;
+            --bg-card: #1f1f1f;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --gradient-main: linear-gradient(135deg, #d6008c 0%, #5e17eb 100%);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* --- Reset & Base --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        button { border: none; background: none; font-family: inherit; cursor: pointer; }
+
+        /* --- Utilities --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--gradient-main);
+            color: white;
+            box-shadow: 0 4px 20px rgba(214, 0, 140, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(214, 0, 140, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: black;
+            border-color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* --- Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo svg { height: 28px; fill: white; }
+
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a { font-size: 0.9rem; color: #ccc; font-weight: 500; }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        .mobile-toggle { display: none; color: white; font-size: 1.5rem; }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, #2a0033 0%, var(--bg-dark) 60%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 5rem;
+            line-height: 0.95;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: #ccc;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        /* --- Series Interactive Showcase --- */
+        .series-showcase {
+            padding: 120px 0;
+            background: var(--bg-panel);
+            position: relative;
+        }
+
+        .showcase-container {
+            display: flex;
+            background: var(--bg-card);
+            border-radius: 30px;
+            overflow: hidden;
+            min-height: 600px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Left Side: Tabs */
+        .series-nav {
+            flex: 1;
+            background: #161616;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .series-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .model-tab {
+            padding: 24px;
+            margin-bottom: 16px;
+            border-radius: 16px;
+            text-align: left;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .model-tab h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .model-tab p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .model-tab:hover {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .model-tab.active {
+            background: linear-gradient(135deg, rgba(214, 0, 140, 0.1) 0%, rgba(94, 23, 235, 0.1) 100%);
+            border-color: var(--primary-color);
+        }
+
+        .model-tab.active h3 {
+            color: var(--primary-color);
+        }
+
+        /* Right Side: Display */
+        .series-display {
+            flex: 1.5;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .model-info {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            position: absolute;
+            top: 60px;
+            left: 60px;
+            width: 40%;
+            z-index: 2;
+            pointer-events: none; /* Let clicks pass through if needed, though layout usually separates them */
+        }
+
+        .model-info.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .model-info h2 {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .model-info .price {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .model-info ul {
+            margin-bottom: 30px;
+        }
+
+        .model-info li {
+            margin-bottom: 12px;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+        }
+
+        .model-info li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 12px;
+        }
+
+        .model-image {
+            width: 45%;
+            height: 70%;
+            position: absolute;
+            right: 60px;
+            bottom: 60px;
+            object-fit: contain;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+        }
+
+        .model-image.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* --- Features Grid --- */
+        .features-section {
+            padding: 100px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 40px;
+            background: var(--bg-card);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255,255,255,0.1);
+            background: #252525;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-cyan);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+        }
+
+        /* --- Banner / CTA --- */
+        .cta-banner {
+            background: var(--gradient-main);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #000;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover { color: white; }
+
+        .copyright {
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        /* --- Mobile --- */
+        @media (max-width: 968px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 3.5rem; }
+            .hero-text p { margin: 0 auto 40px; }
+            .hero-visual { display: none; } /* Simplify on tablet */
+            
+            .showcase-container { flex-direction: column; }
+            .series-nav { flex-direction: row; overflow-x: auto; padding: 20px; border-right: none; border-bottom: 1px solid #333; }
+            .model-tab { min-width: 200px; margin-bottom: 0; margin-right: 10px; }
+            .series-display { padding: 30px; flex-direction: column; text-align: center; height: 500px; }
+            .model-info { position: relative; top: auto; left: auto; width: 100%; margin-bottom: 20px; }
+            .model-image { position: relative; width: 60%; right: auto; bottom: auto; height: auto; margin: 0 auto; }
+            
+            .feature-grid { grid-template-columns: 1fr; }
+            
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12.0002 2.25C12.0002 2.25 5.3299 5.43534 2.31836 9.04722C2.31836 9.04722 0.378662 11.5328 2.24995 14.7352C4.12124 17.9376 8.55341 21.75 12.0002 21.75C15.447 21.75 19.8792 17.9376 21.7504 14.7352C23.6217 11.5328 21.682 9.04722 21.682 9.04722C18.6705 5.43534 12.0002 2.25 12.0002 2.25ZM12.0002 4.25L15.8002 11.85H8.20024L12.0002 4.25Z"/>
+                    </svg>
+                    motorola
+                </a>
+                
+                <div class="nav-links">
+                    <a href="#series">The Series</a>
+                    <a href="#features">Innovation</a>
+                    <a href="#design">Design</a>
+                    <a href="#compare">Compare</a>
+                </div>
+
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <a href="#" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.8rem;">Buy Now</a>
+                    <button class="mobile-toggle">☰</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>The Edge.<br>Defined <span>Again.</span></h1>
+                <p>Experience the new Edge Series. From the pinnacle of luxury with the Ultra to the stylish everyday performance of the Fusion.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#series" class="btn btn-primary">Explore Models</a>
+                    <a href="#features" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Placeholder for a high-end generic hero image -->
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtXEi7HFvKZXr24WkNOfjGguFG5izVO0KZzQ&s" style="border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Series Showcase -->
+    <section id="series" class="series-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet the Family</h2>
+                <p>Choose the level of performance that matches your lifestyle.</p>
+            </div>
+
+            <div class="showcase-container">
+                <!-- Left Tabs -->
+                <div class="series-nav">
+                    <div class="series-title">Select Model</div>
+                    
+                    <div class="model-tab active" onclick="switchModel(0)">
+                        <h3>Edge 50 Ultra</h3>
+                        <p>The absolute flagship.</p>
+                    </div>
+                    
+                    <div class="model-tab" onclick="switchModel(1)">
+                        <h3>Edge 50 Pro</h3>
+                        <p>Powerful performance.</p>
+                    </div>
+                    
+                    <div class="model-tab" onclick="switchModel(2)">
+                        <h3>Edge 50 Fusion</h3>
+                        <p>Style meets substance.</p>
+                    </div>
+                </div>
+
+                <!-- Right Display -->
+                <div class="series-display">
+                    
+                    <!-- Model 1 Content -->
+                    <div class="model-info active" id="info-0">
+                        <h2>Edge 50 Ultra</h2>
+                        <span class="price">Starting $999</span>
+                        <ul>
+                            <li>Snapdragon 8s Gen 3</li>
+                            <li>200MP Main Camera</li>
+                            <li>144Hz Curved pOLED</li>
+                            <li>125W TurboPower Charging</li>
+                            <li>Vegan Leather & Silicone Glass</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Buy Ultra</a>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1592899677712-a5a09359db59?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="model-image active" id="img-0" alt="Edge 50 Ultra">
+
+                    <!-- Model 2 Content -->
+                    <div class="model-info" id="info-1">
+                        <h2>Edge 50 Pro</h2>
+                        <span class="price">Starting $699</span>
+                        <ul>
+                            <li>Snapdragon 7 Gen 3</li>
+                            <li>50MP Telephoto & Macro</li>
+                            <li>144Hz 1.5K Curved Display</li>
+                            <li>125W Charging + 50W Wireless</li>
+                            <li>Pantone Validated Colors</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Buy Pro</a>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="model-image" id="img-1" alt="Edge 50 Pro">
+
+                    <!-- Model 3 Content -->
+                    <div class="model-info" id="info-2">
+                        <h2>Edge 50 Fusion</h2>
+                        <span class="price">Starting $499</span>
+                        <ul>
+                            <li>Snapdragon 7s Gen 2</li>
+                            <li>Pantone Validated Camera</li>
+                            <li>144Hz Flat pOLED</li>
+                            <li>50W Rapid Charging</li>
+                            <li>Silicone Anti-Fingerprint Finish</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Buy Fusion</a>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="model-image" id="img-2" alt="Edge 50 Fusion">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared Features -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Edge?</h2>
+                <p>Innovations shared across the entire lineup.</p>
+            </div>
+            
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Pantone Validated</h3>
+                    <p>The world's first smartphone line with Pantone Validated Camera and Display systems for true-to-life colors.</p>
+                </article>
+                
+                <article class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Ultra-Fast Charge</h3>
+                    <p>From 0 to 100% in minutes. Whether it's 125W wired or 50W wireless, stay powered longer.</p>
+                </article>
+                
+                <article class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Military Grade</h3>
+                    <p>IP68 water resistance and MIL-SPEC 810H durability standards mean your phone is ready for adventure.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Ready to make the switch?</h2>
+            <p style="color: rgba(255,255,255,0.9); margin-bottom: 30px; font-size: 1.2rem;">Trade in your old device and get up to $500 credit.</p>
+            <a href="#" class="btn" style="background: white; color: var(--primary-color);">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="#" class="logo" style="justify-content: center; margin-bottom: 20px; color: white;">
+                <svg viewBox="0 0 24 24" style="height: 24px; fill: white;">
+                    <path d="M12.0002 2.25C12.0002 2.25 5.3299 5.43534 2.31836 9.04722C2.31836 9.04722 0.378662 11.5328 2.24995 14.7352C4.12124 17.9376 8.55341 21.75 12.0002 21.75C15.447 21.75 19.8792 17.9376 21.7504 14.7352C23.6217 11.5328 21.682 9.04722 21.682 9.04722C18.6705 5.43534 12.0002 2.25 12.0002 2.25ZM12.0002 4.25L15.8002 11.85H8.20024L12.0002 4.25Z"/>
+                </svg>
+                motorola edge
+            </a>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Support</a>
+                <a href="#">Careers</a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Motorola Mobility LLC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Model Switcher Logic
+        function switchModel(index) {
+            // 1. Remove active class from all tabs
+            const tabs = document.querySelectorAll('.model-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // 2. Add active class to clicked tab
+            tabs[index].classList.add('active');
+
+            // 3. Hide all info and images
+            const infos = document.querySelectorAll('.model-info');
+            const images = document.querySelectorAll('.model-image');
+
+            infos.forEach(info => info.classList.remove('active'));
+            images.forEach(img => img.classList.remove('active'));
+
+            // 4. Show specific info and image with slight delay for effect
+            setTimeout(() => {
+                document.getElementById(`info-${index}`).classList.add('active');
+                document.getElementById(`img-${index}`).classList.add('active');
+            }, 50);
+        }
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileBtn.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '80px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = '#0a0a0a';
+                navLinks.style.padding = '20px';
+                navLinks.style.borderBottom = '1px solid #333';
+            }
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
